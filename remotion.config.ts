@@ -1,6 +1,7 @@
 import {Config} from '@remotion/cli/config';
 
 Config.setVideoImageFormat('jpeg');
+Config.setChromiumIgnoreCertificateErrors(true);
 
 // Use the browser preinstalled in this environment instead of downloading one.
 const preinstalledBrowser =
