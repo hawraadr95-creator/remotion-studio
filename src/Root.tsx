@@ -2,6 +2,7 @@ import {Composition} from 'remotion';
 import {StudioReady} from './StudioReady';
 import {AlWazirPowderAd} from './compositions/alwazir/AlWazirPowderAd';
 import {DenialOfDeathIntro} from './compositions/denialOfDeath/DenialOfDeathIntro';
+import {DenialOfDeathFull} from './compositions/denialOfDeath/DenialOfDeathFull';
 
 export const RemotionRoot: React.FC = () => {
 	return (
@@ -26,6 +27,14 @@ export const RemotionRoot: React.FC = () => {
 				id="DenialOfDeathIntro"
 				component={DenialOfDeathIntro}
 				durationInFrames={240}
+				fps={30}
+				width={1080}
+				height={1920}
+			/>
+			<Composition
+				id="DenialOfDeathFull"
+				component={DenialOfDeathFull}
+				durationInFrames={1380}
 				fps={30}
 				width={1080}
 				height={1920}
