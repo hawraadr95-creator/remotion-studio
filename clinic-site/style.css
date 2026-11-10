@@ -64,3 +64,5 @@ footer{text-align:center;padding:30px 5vw;color:var(--muted);font-size:.9rem}
   .hero-img{order:-1;max-width:320px;margin:auto}
   .stats{grid-template-columns:1fr}
 }
+.social{color:var(--gold-d);font-weight:700;text-decoration:underline}
+.foot-links a{color:var(--gold-d);font-weight:600}
