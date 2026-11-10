@@ -75,3 +75,7 @@ footer{text-align:center;padding:30px 5vw;color:var(--muted);font-size:.9rem}
 .post h3{color:var(--gold-d);margin:4px 0}
 .post p{color:var(--muted);font-size:.95rem}
 .empty{grid-column:1/-1;text-align:center;color:var(--muted);background:#fff;border:2px dashed var(--gold);border-radius:20px;padding:40px}
+.socials{display:flex;gap:10px;margin:0 0 18px}
+.soc{padding:8px 20px;border-radius:999px;color:#fff;font-weight:700;font-size:.95rem}
+.soc.ig{background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)}
+.soc.fb{background:#1877f2}
