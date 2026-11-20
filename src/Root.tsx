@@ -3,6 +3,7 @@ import {StudioReady} from './StudioReady';
 import {AlWazirPowderAd} from './compositions/alwazir/AlWazirPowderAd';
 import {ClinicSimulator, CLINIC_SIM_DURATION} from './compositions/clinicsim/ClinicSimulator';
 import {ClinicOpenWorld, CLINIC_OPEN_WORLD_DURATION} from './compositions/clinicopenworld/ClinicOpenWorld';
+import {IVFExplainer, IVF_DURATION} from './compositions/ivf/IVFExplainer';
 import {ClinicGameStyle, CLINIC_GAME_DURATION} from './compositions/clinicgame/ClinicGameStyle';
 
 export const RemotionRoot: React.FC = () => {
@@ -47,6 +48,15 @@ export const RemotionRoot: React.FC = () => {
 				fps={30}
 				width={1080}
 				height={1920}
+			/>
+			<Composition
+				id="IVFExplainer"
+				component={IVFExplainer}
+				durationInFrames={IVF_DURATION}
+				fps={30}
+				width={1080}
+				height={1920}
+				defaultProps={{voiceover: null, music: 'ivf/music.mp3'}}
 			/>
 		</>
 	);
