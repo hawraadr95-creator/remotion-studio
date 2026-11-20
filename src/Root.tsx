@@ -2,6 +2,7 @@ import {Composition} from 'remotion';
 import {StudioReady} from './StudioReady';
 import {AlWazirPowderAd} from './compositions/alwazir/AlWazirPowderAd';
 import {ClinicSimulator, CLINIC_SIM_DURATION} from './compositions/clinicsim/ClinicSimulator';
+import {ClinicOpenWorld, CLINIC_OPEN_WORLD_DURATION} from './compositions/clinicopenworld/ClinicOpenWorld';
 import {ClinicGameStyle, CLINIC_GAME_DURATION} from './compositions/clinicgame/ClinicGameStyle';
 
 export const RemotionRoot: React.FC = () => {
@@ -35,6 +36,14 @@ export const RemotionRoot: React.FC = () => {
 				id="ClinicSimulator"
 				component={ClinicSimulator}
 				durationInFrames={CLINIC_SIM_DURATION}
+				fps={30}
+				width={1080}
+				height={1920}
+			/>
+			<Composition
+				id="ClinicOpenWorld"
+				component={ClinicOpenWorld}
+				durationInFrames={CLINIC_OPEN_WORLD_DURATION}
 				fps={30}
 				width={1080}
 				height={1920}
