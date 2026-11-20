@@ -2,7 +2,14 @@
 // Each segment = one scene. Captions are split into chunks and timed by word count.
 // When a recorded voiceover is added, adjust `seconds` (or set chunk timings) to match it.
 
+import vo from './vo-timings.json';
+
 export const FPS = 30;
+
+type VoChunk = {text: string; start: number; end: number};
+type VoSeg = {id: string; start: number; seconds: number; chunks: VoChunk[]};
+const VO = (vo as {segments: VoSeg[]}).segments;
+export const HAS_VO_TIMINGS = VO.length > 0;
 
 export type Segment = {
 	id: string;
@@ -83,6 +90,13 @@ export const SEGMENTS: Segment[] = [
 export type TimedSegment = Segment & {from: number; dur: number};
 
 export const TIMELINE: TimedSegment[] = (() => {
+	if (HAS_VO_TIMINGS) {
+		return SEGMENTS.map((s) => {
+			const v = VO.find((x) => x.id === s.id);
+			if (!v) throw new Error(`vo timing missing for ${s.id}`);
+			return {...s, from: Math.round(v.start * FPS), dur: Math.round(v.seconds * FPS)};
+		});
+	}
 	let t = 0;
 	return SEGMENTS.map((s) => {
 		const dur = Math.round(s.seconds * FPS);
@@ -102,6 +116,10 @@ export const seg = (id: string) => {
 
 // Split segment duration across caption chunks proportionally to word count.
 export const captionTimings = (s: TimedSegment) => {
+	const v = HAS_VO_TIMINGS ? VO.find((x) => x.id === s.id) : undefined;
+	if (v) {
+		return v.chunks.map((c) => ({text: c.text, from: Math.round(c.start * FPS) - 3, to: Math.round(c.end * FPS) + 6}));
+	}
 	const lead = 6; // frames before first caption
 	const tail = 8;
 	const avail = s.dur - lead - tail;
